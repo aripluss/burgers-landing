@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "burgers": {
+    "burgers-landing": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/burgers",
+            "outputPath": "dist/burgers-landing",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -34,16 +34,17 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "1mb",
                   "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref":  "/burger-house/"
             },
             "development": {
               "buildOptimizer": false,
@@ -60,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "burgers:build:production"
+              "browserTarget": "burgers-landing:build:production"
             },
             "development": {
-              "browserTarget": "burgers:build:development"
+              "browserTarget": "burgers-landing:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "burgers:build"
+            "browserTarget": "burgers-landing:build"
           }
         },
         "test": {
