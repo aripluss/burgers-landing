@@ -13,7 +13,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  currency = '$';
+  currency:string = '$';
 
   form = this.fb.group({
     order: ['', Validators.required],
@@ -22,7 +22,7 @@ export class AppComponent {
   });
 
   phoneValidator(): ValidatorFn {
-    const phoneRegexp =
+    const phoneRegexp:RegExp =
       /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/;
 
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -39,7 +39,7 @@ export class AppComponent {
     this.appService.getData().subscribe((data) => (this.productsData = data));
   }
 
-  scrollTo(target: HTMLElement, burger?: any) {
+  scrollTo(target: HTMLElement, burger?: any):void {
     target.scrollIntoView({ behavior: 'smooth' });
 
     if (burger) {
@@ -49,7 +49,7 @@ export class AppComponent {
     }
   }
 
-  confirmOrder() {
+  confirmOrder():void {
     if (this.form.valid) {
       this.appService.sendOrder(this.form.value).subscribe({
         next: (response: any) => {
@@ -63,9 +63,9 @@ export class AppComponent {
     }
   }
 
-  changeCurrency() {
-    let newCurrency = '$';
-    let coefficient = 1;
+  changeCurrency():void {
+    let newCurrency:string = '$';
+    let coefficient:number = 1;
 
     if (this.currency === '$') {
       newCurrency = '€';
@@ -77,7 +77,7 @@ export class AppComponent {
 
     this.currency = newCurrency;
 
-    this.productsData.forEach((item: any) => {
+    this.productsData.forEach((item: any):void => {
       item.price = (item.basePrice * coefficient)
         .toFixed(1)
         .replace(/\.0$/, '');
